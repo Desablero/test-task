@@ -13,13 +13,6 @@ import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
 
 import "./header.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import Home from "../home";
-import News from "../news";
-import Weather from "../weather";
-import Profile from "../profile";
-import Login from "../login";
 
 // Material-UI Hook
 const useStyles = makeStyles((theme) => ({
@@ -96,15 +89,6 @@ export default function Header() {
           </Toolbar>
         </Container>
       </AppBar>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/news" component={News} />
-          <Route exact path="/weather" component={Weather} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/login" component={Login} />
-        </Switch>
-      </Router>
     </React.Fragment>
   );
 }
