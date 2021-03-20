@@ -9,9 +9,11 @@ import {
 } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import HomeIcon from "@material-ui/icons/Home";
-import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
 
+// import LoginButton from './'
+import LoginButton from "./buttons/LoginButton";
+import LogoutButton from "./buttons/LogoutButton";
 import "./header.css";
 
 // Material-UI Hook
@@ -27,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(5),
   },
   navButton: {
-    marginRight: theme.spacing(6),
+    marginRight: theme.spacing(4),
   },
   logIn: {
-    marginLeft: theme.spacing(50),
+    marginLeft: theme.spacing(40),
   },
 }));
 
@@ -75,17 +77,9 @@ export default function Header() {
               >
                 Profile
               </Button>
-              <Button
-                className={classes.logIn}
-                size="small"
-                variant="contained"
-                color="secondary"
-                startIcon={<PersonIcon />}
-                href="/login"
-              >
-                Log In
-              </Button>
             </Box>
+            <LoginButton />
+            <LogoutButton />
           </Toolbar>
         </Container>
       </AppBar>
