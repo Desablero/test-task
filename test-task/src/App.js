@@ -31,7 +31,7 @@ function App() {
     </div>
   );
   return (
-    <div className="App">
+    <div className="app">
       <Header />
       {visiblePerson}
 
