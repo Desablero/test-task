@@ -1,3 +1,4 @@
+import { keys } from "@material-ui/core/styles/createBreakpoints";
 import React, { useState } from "react";
 import "./weather.css";
 
@@ -5,6 +6,10 @@ const api = {
   key: "04813fad06be7cb407d737ee29d61011",
   base: "https://api.openweathermap.org/data/2.5/",
 };
+
+const myLoc = `http://maps.openweathermap.org/maps/2.0/weather/TA2/{z}/{x}/{y}&appid=${api.key}`;
+
+console.log(api.myLoc);
 
 function Weather() {
   const [query, setQuery] = useState("");
@@ -26,6 +31,8 @@ function Weather() {
       <div className="weather-wrapper">
         <main>
           <div className="search">
+            <button>My Loc</button>
+            <br />
             <input
               type="text"
               placeholder="Find the weather in the city"

@@ -17,11 +17,11 @@
 .search {
   margin: 20px auto;
   /* position: relative; */
-  padding-top: 80px;
+  padding-top: 50px;
 }
 
 .search input {
-  box-decoration-break: none;
+  /* box-decoration-break: none; */
   text-align: center;
   width: 250px;
   height: 21px;
@@ -30,6 +30,20 @@
   background-color: #bfd6e2;
   color: #4150b5;
   box-shadow: 0px 5px (rgba(0, 0, 0, 0.2));
+  outline: none;
+}
+
+.search button {
+  background: #76b3fa;
+  border-radius: 100px;
+  padding: 8px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 10px;
+  margin: 10px 7px;
+  border: solid #bfd6e2 2px;
+  /* Убираем выделение синим цветом при нажатии */
+  outline: none;
 }
 
 .location-box .location {
