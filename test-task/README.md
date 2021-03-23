@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Тестовое задание для JetUp Digital
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Этот проект был разработан с целью демонстрации навыков программирования на JavaScript с использованием библиотеки React.
 
-## Available Scripts
+## Данный проект использует следующие сервисы и технологии:
 
-In the project directory, you can run:
+### `Material-UI`
 
-### `npm start`
+A popular React UI framework.
+https://material-ui.com/ru/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `News API`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Получение новостей с помощью Web API.
+https://newsapi.org/
 
-### `npm test`
+### `Open Weather Map API`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Получение данных о прогнозе погоды через Web API.
+https://openweathermap.org/
 
-### `npm run build`
+### `Auth0`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Адаптируемая платформа аутентификации и авторизации, а также данными зарегистрированных пользователей.
+https://auth0.com/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Примичания по проекту
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Атомарность коммитов
 
-### `npm run eject`
+Все изменения и дополнения рабочей директории были дискретно закоммичены, как и оговаривалось в ТЗ. Почти ко всем коммитам есть доп. комментарии через которые можно проследить детальную эволюцию проекта.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Компонент новостей
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Обычный вывод секций новостей мне показался банальным, так как я уже реализовывал подобный функционал на предыдущем проекте: github.com/Desablero/Bitcoin-Balance-Checker. Поэтому я решил дополнить задание ещё и поиском новостей, а на оставшееся время вывести рандомные блоки с новостями. Увы, времени не осталось, но если потребуется, то данную возможность я также реализую.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Логика этого компонента задействует setState вместо хуков, это исключительно с целью демонстрации навыка, в компоненте погоды будут использоваться хуки.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Компонент погоды
 
-## Learn More
+Данный компонент выводит температуру и погодные условия по запрашиваемому городу. Для операций с хранилищем использует хуки. К сожалению в данном компоненте были выполнены не все условия ТЗ, а именно создание нескольких блоков погоды для разных городов а также удаления их из списка небыли реализованы из-за недостатка опыта работы с хуками и ограниченым временем (с setState сделал бы, опять же док-во в моём предыдущем проекте).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Аутентификация
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Данный компонент был реализован через платформу Auth0 и находится на ветке "authorization_auth0". Он небыл смежен с master веткой, т.к там был неисправленый баг. Заключался он в том, что после ререндера страници пропадала информация об аутентифицированном пользователя. Но пользователь без проблем проходил процедуру регистрации и его данные выводились в компоненте на который был настроен редирект. Также данная библиотека позволяла легко получить информацию про состояния аутентификации пользователя. isAuthenticated() возвращает булевое значение и является аналогом JWT токена, следовательно опираясь на это значение можно бы выводить или скрывать компоненты от пользователя, тем самым выполнив одно из заданий ТЗ.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+На этапе написания этой подглавы я догадался в чём скорее всего была проблема. Думаю это связано с тем, что данные после логина юзера нигде промежуточно не сохранялись.
