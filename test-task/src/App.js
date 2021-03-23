@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/news" component={News} />
           <Route exact path="/weather" component={Weather} />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" component={Profile} />
           <Redirect to="/" />
         </Switch>
       </Router>

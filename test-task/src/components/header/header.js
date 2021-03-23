@@ -83,7 +83,7 @@ export default function Header() {
                 startIcon={<PersonIcon />}
                 href="/login"
               >
-                Log In
+                Log Out
               </Button>
             </Box>
           </Toolbar>
