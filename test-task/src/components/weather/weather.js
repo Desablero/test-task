@@ -1,4 +1,4 @@
-import { keys } from "@material-ui/core/styles/createBreakpoints";
+// import { keys } from "@material-ui/core/styles/createBreakpoints";
 import React, { useState } from "react";
 import "./weather.css";
 
@@ -6,10 +6,6 @@ const api = {
   key: "04813fad06be7cb407d737ee29d61011",
   base: "https://api.openweathermap.org/data/2.5/",
 };
-
-const myLoc = `http://maps.openweathermap.org/maps/2.0/weather/TA2/{z}/{x}/{y}&appid=${api.key}`;
-
-console.log(api.myLoc);
 
 function Weather() {
   const [query, setQuery] = useState("");
@@ -26,16 +22,27 @@ function Weather() {
     }
   };
 
+  const getMyLocationLink = () => {
+    navigator.geolocation.getCurrentPosition(success, error);
+    function success(pos) {
+      const crd = pos.coords;
+      const apiLink = `api.openweathermap.org/data/2.5/weather?lat=${crd.latitude}&lon=${crd.longitude}&appid=${api.key}`;
+      console.log("Link to local weather: " + apiLink);
+    }
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+  };
+  getMyLocationLink();
+
   return (
     <div className="weather">
       <div className="weather-wrapper">
         <main>
           <div className="search">
-            <button>My Loc</button>
-            <br />
             <input
               type="text"
-              placeholder="Find the weather in the city"
+              placeholder="Enter your city"
               onChange={(e) => {
                 setQuery(e.target.value);
               }}
