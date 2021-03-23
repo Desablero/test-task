@@ -2,7 +2,7 @@ import React from "react";
 
 import "./news.css";
 
-import SearchNews from "./searchNews";
+import SearchNews from "./search-news/searchNews";
 
 export default class News extends React.Component {
   state = {};
@@ -10,9 +10,10 @@ export default class News extends React.Component {
   render() {
     return (
       <div className="news">
-        <h1>News</h1>
-        <div>
-          <SearchNews />
+        <div className="news__wrapper">
+          <div className="search__news-com">
+            <SearchNews />
+          </div>
         </div>
       </div>
     );

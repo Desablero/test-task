@@ -1,5 +1,7 @@
 import React from "react";
-import NewsAPI from "./service/newsApi";
+import NewsAPI from "../service/newsApi";
+
+import "./searchNews.css";
 
 export default class SearchNews extends React.Component {
   newsApi = new NewsAPI();
@@ -47,7 +49,7 @@ export default class SearchNews extends React.Component {
       const newsID = `f${(~~(Math.random() * 1e8)).toString(16)}`;
       return (
         <div key={newsID}>
-          <a href={el[1]}>
+          <a className="news__list-link" href={el[1]}>
             <span>{el[0]}</span>
           </a>
           <br />
@@ -55,25 +57,28 @@ export default class SearchNews extends React.Component {
       );
     });
 
-    const newsOf = lastSearch === "" ? null : `Вот, что мне удалось найти: `;
+    // const newsOf = lastSearch === "" ? null : `Вот, что мне удалось найти: `;
 
     return (
       <div>
         <div className="search-news">
-          <form onSubmit={onSubmit}>
-            <input
-              placeholder="Type to search news"
-              type="text"
-              onChange={this.onChangeinput.bind(this)}
-              value={typingInput}
-            />
+          <form className="search-news-form" onSubmit={onSubmit}>
+            <div className="search-news-input">
+              <input
+                placeholder="Type to search news"
+                type="text"
+                onChange={this.onChangeinput.bind(this)}
+                value={typingInput}
+              />
+            </div>
           </form>
         </div>
         <br />
-        {newsOf}
-        <br />
-        <br />
-        {newsLines}
+        <div className="news__list">
+          <br />
+          <br />
+          {newsLines}
+        </div>
       </div>
     );
   }

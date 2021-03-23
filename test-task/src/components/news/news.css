@@ -1,3 +1,17 @@
 .news {
-  margin-top: 80px;
+  max-width: 1900px;
+  max-height: 800px;
+  text-align: center;
+}
+
+.news__wrapper {
+  background-image: url("./img/news-bg.jpg");
+  width: 1500px;
+  height: 800px;
+  background-size: cover;
+  margin: 0px auto;
+}
+
+.search__news-com {
+  padding-top: 120px;
 }
