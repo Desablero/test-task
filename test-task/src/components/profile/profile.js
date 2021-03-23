@@ -1,6 +1,7 @@
 import React from "react";
 import "./profile.css";
 
+// Компонент требует доработки
 export default class Profile extends React.Component {
   render() {
     return (

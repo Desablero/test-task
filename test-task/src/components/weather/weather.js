@@ -16,17 +16,21 @@ function Weather() {
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
         .then((res) => res.json())
         .then((result) => {
+          // Устанавливаем новое значение stat и очищаем input
           setWeather(result);
           setQuery("");
         });
     }
   };
 
+  // Данная функция определяет координаты пользователя и делает запрос API
   const getMyLocationLink = () => {
     navigator.geolocation.getCurrentPosition(success, error);
     function success(pos) {
       const crd = pos.coords;
       const apiLink = `api.openweathermap.org/data/2.5/weather?lat=${crd.latitude}&lon=${crd.longitude}&appid=${api.key}`;
+
+      // Resolve не выводится в .json ¯\_(ツ)_/¯
       console.log("Link to local weather: " + apiLink);
     }
     function error(err) {
@@ -43,6 +47,7 @@ function Weather() {
             <input
               type="text"
               placeholder="Enter your city"
+              // Считываем значение инпута по нажатию на enter и отправляем в state
               onChange={(e) => {
                 setQuery(e.target.value);
               }}
@@ -51,6 +56,7 @@ function Weather() {
             />
           </div>
           {/* Если погода не запрашивалась, выводим "" */}
+          {/* Иначе всё упадёт, т.к. weather.name будет доступно только после fetch'a */}
           {typeof weather.main != "undefined" ? (
             <div>
               <div className="location-box">

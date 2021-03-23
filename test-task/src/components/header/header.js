@@ -1,4 +1,6 @@
 import React from "react";
+
+// Импорты Material IO
 import {
   AppBar,
   Container,
@@ -17,7 +19,7 @@ import "./header.css";
 // Material-UI Hook
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    flexGrow: 1, // определяет как много свободного пространства во flex-контейнере должно быть назначено текущему элементу
+    flexGrow: 1, // определяет как много свободного пространства во flex-контейнере в текущем элементе
   },
   homeButton: {
     marginRight: theme.spacing(1), // spacing 1 эквивалент 8-и пикселям

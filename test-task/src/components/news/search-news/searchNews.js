@@ -35,12 +35,17 @@ export default class SearchNews extends React.Component {
   }
 
   render() {
-    const { listNews, typingInput, lastSearch } = this.state;
+    const { listNews, typingInput } = this.state;
 
     const onSubmit = (event) => {
+      // Не перезагружаем страницу после сабмита
       event.preventDefault();
+
+      // Вызываем функцию поиска новостей с введённым запросом
       this.onSearchNew(typingInput);
-      this.setState({ typingInput: "", lastSearch: { typingInput } });
+
+      // Очищаем поле input после завершения поиска новосткей
+      this.setState({ typingInput: "" });
     };
 
     // Выводим список запрашиваемых новстей
@@ -56,8 +61,6 @@ export default class SearchNews extends React.Component {
         </div>
       );
     });
-
-    // const newsOf = lastSearch === "" ? null : `Вот, что мне удалось найти: `;
 
     return (
       <div>
