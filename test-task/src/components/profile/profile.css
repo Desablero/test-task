@@ -1,3 +1,20 @@
 .profile {
-  margin-top: 80px;
+  max-width: 1900px;
+  max-height: 800px;
+  text-align: center;
+}
+
+.profile__wrapper {
+  background-image: url("./img/profile-bg.jpg");
+  width: 1500px;
+  height: 800px;
+  background-size: cover;
+  margin: 0px auto;
+}
+
+.profile__wrapper div {
+  padding-right: 33px;
+  font-size: 20px;
+  padding-top: 70px;
+  color: white;
 }
